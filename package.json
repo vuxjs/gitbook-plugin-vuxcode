@@ -1,0 +1,10 @@
+{
+  "name": "gitbook-plugin-vuxcode",
+  "version": "0.0.2",
+  "description": "gitbook plugin for vux",
+  "engines": {
+    "gitbook": ">1.x.x"
+  },
+  "main": "index.js",
+  "gitbook": {}
+}
