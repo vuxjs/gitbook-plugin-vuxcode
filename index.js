@@ -1,7 +1,6 @@
 'use strict';
 
 var parse = require('./libs/parser');
-var co = require('co');
 
 function addTag(code, tag) {
   var html = '' + slash(code);
