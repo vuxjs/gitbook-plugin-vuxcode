@@ -18,7 +18,7 @@ module.exports = {
       process: function(block) {
         var data = parse(block.body)
         var height = block.kwargs.height ? block.kwargs.height : 100
-        var width = block.kwargs.width ? block.kwargs.width : '100%'
+        var width = block.kwargs.width ? block.kwargs.width : '375'
         var url = `https://vux.li/api/v1/demo.html?components=${encode(data.components)}&template=${encode(data.template)}&style=${encode(data.style)}&script=${encode(data.script)}`
         var html = `<div style=""><iframe src="${url}" frameborder="0" scrolling="no" height="${height}" width="${width}" style="border:none;overflow:hidden;"></iframe></div>`
         for(var i in data) {
