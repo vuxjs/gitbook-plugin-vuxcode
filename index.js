@@ -19,9 +19,12 @@ module.exports = {
     vux: {
       process: function process(block) {
         var data = parse(block.body);
+        var components = data.components;
+        components = block.kwargs.components || data.components;
         var height = block.kwargs.height ? block.kwargs.height : 100;
         var width = block.kwargs.width ? block.kwargs.width : '375';
-        var url = 'https://vux.li/api/v1/demo.html?components=' + encode(data.components) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
+
+        var url = 'https://vux.li/api/v1/demo.html?components=' + encode(components) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
         var html = '<div style=""><iframe src="' + url + '" frameborder="0" scrolling="no" height="' + height + '" width="' + width + '" style="border:none;overflow:hidden;"></iframe></div>';
         for (var i in data) {
           if (i === 'template' && data[i]) {
