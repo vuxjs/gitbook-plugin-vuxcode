@@ -12,6 +12,9 @@ module.exports = function (str) {
     var _rs = str.match(regs[one + 'Reg'])
     data[one] = _rs && _rs[1]? _rs[1]: ''
     data[one] = data[one].replace(/^\s+|\s+$/g,'')
+    if(one==='template'){
+      data[one] = data[one].replace('<<','{{').replace('>>','}}')
+    }
   })
   return data
 }
