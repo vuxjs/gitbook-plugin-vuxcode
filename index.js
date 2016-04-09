@@ -64,12 +64,7 @@ module.exports = {
 function buildHTML(code, width, height, components, isProduct) {
   var data = parse(code);
   var url = 'https://vux.li/api/v1/demo.html?components=' + encode(components) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
-  var html = `
-  <div style="padding-bottom:10px;position:relative">
-    <iframe src="${url}" frameborder="0" scrolling="no" height="${height}" width="${width}" style="border:none;overflow:hidden;"></iframe>
-    <a href="${url}" target="_blank" style="position:absolute;right:5px;top: -20px;color:#ccc;font-size:12px;">新窗口打开</a>
-  </div>
-  `
+  var html = '<div style="padding-bottom:10px;position:relative"><iframe src="' + url + '" frameborder="0" scrolling="no" height="' + height + '" width="' + width + '" style="border:none;overflow:hidden;"></iframe><a href="' + url + '" target="_blank" style="position:absolute;right:5px;top: -20px;color:#ccc;font-size:12px;">新窗口打开</a></div>'
   for (var i in data) {
     if (i === 'template' && data[i]) {
       html += '<p class="vux-code-box vux-code-box-template" style="color:#ccc;margin-bottom:0;margin-top:10px;">template</p><pre style="margin:0;padding:0 10px;"><code class="language-html">' + addTag(data[i], 'template') + '</code></pre>';
