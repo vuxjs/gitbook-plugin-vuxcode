@@ -53,7 +53,7 @@ module.exports = {
         }
         if (raw === 'false') {
           var code = _match.split('\n').slice(1, -1).join('\n')
-          var html = buildHTML(code, width, height, components, isProduct)
+          var html = buildHTML(code, width, height, components, filters, isProduct)
           return html
         } else {
           return _match.replace(' raw=true', '')
@@ -65,7 +65,7 @@ module.exports = {
   }
 };
 
-function buildHTML(code, width, height, components, isProduct) {
+function buildHTML(code, width, height, components, filters, isProduct) {
   var data = parse(code);
   var url = 'https://vux.li/api/v1/demo.html?components=' + encode(components) + '&filters=' + encode(filters) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
   var html = '<div style="padding-bottom:10px;position:relative"><iframe src="' + url + '" frameborder="0" scrolling="no" height="' + height + '" width="' + width + '" style="border:none;overflow:hidden;"></iframe><a href="' + url + '" target="_blank" style="position:absolute;right:5px;top: -20px;color:#ccc;font-size:12px;">新窗口打开</a></div>'
