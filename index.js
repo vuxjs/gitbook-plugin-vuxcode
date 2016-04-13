@@ -26,6 +26,7 @@ module.exports = {
         var height = 100
         var width = '100%'
         var components = ''
+        var filters = ''
         var raw = 'false'
         var def = _match.split('\n')[0].replace('``` vux', '')
         def = def.replace(/^\s+/, '').replace(/\s+$/, '')
@@ -41,6 +42,9 @@ module.exports = {
             }
             if (_split[0] === 'components') {
               components = _split[1]
+            }
+            if (_split[0] === 'filters') {
+              filters = _split[1]
             }
             if (_split[0] === 'raw') {
               raw = _split[1]
@@ -63,7 +67,7 @@ module.exports = {
 
 function buildHTML(code, width, height, components, isProduct) {
   var data = parse(code);
-  var url = 'https://vux.li/api/v1/demo.html?components=' + encode(components) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
+  var url = 'https://vux.li/api/v1/demo.html?components=' + encode(components) + '&filters=' + encode(filters) + '&template=' + encode(data.template) + '&style=' + encode(data.style) + '&script=' + encode(data.script);
   var html = '<div style="padding-bottom:10px;position:relative"><iframe src="' + url + '" frameborder="0" scrolling="no" height="' + height + '" width="' + width + '" style="border:none;overflow:hidden;"></iframe><a href="' + url + '" target="_blank" style="position:absolute;right:5px;top: -20px;color:#ccc;font-size:12px;">新窗口打开</a></div>'
   for (var i in data) {
     if (i === 'template' && data[i]) {
